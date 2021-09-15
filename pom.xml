@@ -5,9 +5,9 @@
 
     <groupId>com.motaharinia</groupId>
     <artifactId>ms-converter-utility</artifactId>
-    <version>0.0.1</version>
-    <name>Ms-Converter-Utility</name>
-    <description>Ms-Converter-Utility is developed by Mostafa Motaharinia (eng.motahari@gmail.com). The project contains utilities to make the main project code uniform and similar and it is used as a dependency in other projects</description>
+    <version>0.0.2</version>
+    <name>Ms Converter Utility</name>
+    <description>Ms Converter Utility is developed by Mostafa Motaharinia (eng.motahari@gmail.com). The project contains utilities to make the main project code uniform and similar and it is used as a dependency in other projects</description>
     <url>https://github.com/motaharinia</url>
 
     <properties>
@@ -84,12 +84,27 @@
             <artifactId>poi-ooxml-schemas</artifactId>
             <version>4.1.2</version>
         </dependency>
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi</artifactId>
+            <version>4.1.2</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi-examples</artifactId>
+            <version>4.1.2</version>
+        </dependency>
         <!--pdf-->
         <dependency>
             <groupId>io.woo</groupId>
             <artifactId>htmltopdf</artifactId>
             <version>1.0.8</version>
             <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.itextpdf</groupId>
+            <artifactId>itextpdf</artifactId>
+            <version>5.5.13.2</version>
         </dependency>
     </dependencies>
 
