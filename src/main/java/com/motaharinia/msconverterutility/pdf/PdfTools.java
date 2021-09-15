@@ -56,7 +56,9 @@ public interface PdfTools {
      * csv از رشته pdf متد تولید
      *
      * @param csvDto csv مدل تنظیمات
-     * @throws IOException خطا
+     * @return خروجی: آرایه بایت pdf
+     * @throws IOException       خطا
+     * @throws DocumentException خطا
      */
     static ByteArrayOutputStream generateFromCsv(@NotNull CsvDto csvDto) throws IOException, DocumentException {
 
@@ -137,7 +139,10 @@ public interface PdfTools {
     /**
      * excel از pdf متد تولید
      *
-     * @param byteArrayInputStream excel بایت ورودی
+     * @param byteArrayInputStream آرایه بایت اکسل ورودی
+     * @param pdfPageSize          سایز صفحه
+     * @param pdfOrientation       جهت عمودی یا افقی صفحه
+     * @return خروجی: آرایه بایت pdf
      * @throws IOException خطا
      */
     static ByteArrayOutputStream generateFromExcel(@NotNull ByteArrayInputStream byteArrayInputStream, @NotNull PdfPageSize pdfPageSize, @NotNull PdfOrientation pdfOrientation) throws IOException {
