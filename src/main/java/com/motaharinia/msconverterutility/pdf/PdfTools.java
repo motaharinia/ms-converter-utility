@@ -34,10 +34,11 @@ public interface PdfTools {
 
 
     /**
-     * متد تولید pdf از رشته html
-     *
-     * @param html رشته html
-     * @return خروجی: خروجی بایت pdf
+     * متد تولید پی دی اف از رشته html
+     * @param html رشته Html
+     * @param pdfPageSize سایز صفحه پی دی اف
+     * @param pdfOrientation جهت عمودی / افقی پی دی اف
+     * @return خروجی: شیی آرایه داده پی دی اف
      * @throws IOException خطا
      */
     @NotNull

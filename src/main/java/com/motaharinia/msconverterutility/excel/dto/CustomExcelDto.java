@@ -2,29 +2,38 @@ package com.motaharinia.msconverterutility.excel.dto;
 
 import java.util.List;
 
+/**
+ * @author https://github.com/motaharinia<br>
+ * کلاس اینترفیس مدل اطلاعات و تنظیمات تولید اکسل
+ */
 public interface CustomExcelDto {
     /**
-     * عنوان صفحه اکسل
+     * @return خروجی: عنوان صفحه اکسل
      */
     String getSheetTitle();
+
     /**
-     *جهت صفحه اکسل
+     * @return خروجی: جهت راست به چپ صفحه اکسل
      */
     Boolean getSheetRightToLeft();
+
     /**
-     * عنوان سربرگ اکسل
+     * @return خروجی:  عنوان سربرگ اکسل
      */
     CustomExcelCaptionDto getCaptionDto();
+
     /**
-     * لیستی از عناوین ستونهای اکسل را در خود دارد
+     * @return خروجی:  لیستی از عناوین ستونهای اکسل را در خود دارد
      */
     List<CustomExcelColumnHeaderDto> getColumnHeaderList();
+
     /**
-     * لیستی از تنظمیات ستونهای اکسل را در خود دارد
+     * @return خروجی:  لیستی از تنظمیات ستونهای اکسل را در خود دارد
      */
     List<CustomExcelColumnDto> getColumnList();
+
     /**
-     * داده های سطرها
+     * @return خروجی: لیست سطرهای داده
      */
     List<Object[]> getRowList();
 }

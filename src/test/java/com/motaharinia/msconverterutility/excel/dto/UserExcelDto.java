@@ -8,6 +8,10 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+/**
+ * @author https://github.com/motaharinia<br>
+ * کلاس پیاده سازی مدل اطلاعات و تنظیمات تولید اکسل کاربران
+ */
 public class UserExcelDto implements CustomExcelDto {
 
     /**
@@ -16,21 +20,22 @@ public class UserExcelDto implements CustomExcelDto {
     private CustomExcelStyleDto customExcelStyleDto;
 
     /**
-     *  داده های سطرها
+     * لیست سطرهای داده
      */
-    private List<Object[]> rowList = new ArrayList<>();
+    private List<Object[]> rowList;
 
 
     /**
      * متد سازنده
-     * @param rowList داده های سطرها
+     *
+     * @param rowList لیست سطرهای داده
      */
     public UserExcelDto(List<Object[]> rowList) {
         this.rowList = rowList;
     }
 
     /**
-     * عنوان صفحه اکسل
+     * @return خروجی: عنوان صفحه اکسل
      */
     @Override
     public String getSheetTitle() {
@@ -38,7 +43,7 @@ public class UserExcelDto implements CustomExcelDto {
     }
 
     /**
-     * جهت صفحه اکسل
+     * @return خروجی: جهت راست به چپ صفحه اکسل
      */
     @Override
     public Boolean getSheetRightToLeft() {
@@ -46,22 +51,22 @@ public class UserExcelDto implements CustomExcelDto {
     }
 
     /**
-     * عنوان سربرگ اکسل
+     * @return خروجی:  عنوان سربرگ اکسل
      */
     @Override
     public CustomExcelCaptionDto getCaptionDto() {
         //عنوان سربرگ اکسل
-        customExcelStyleDto = new CustomExcelStyleDto(HorizontalAlignment.CENTER, "Tahoma",true, Color.WHITE, new Color(198, 0, 199), BorderStyle.THIN, Color.BLACK,"General");
+        customExcelStyleDto = new CustomExcelStyleDto(HorizontalAlignment.CENTER, "Tahoma", true, Color.WHITE, new Color(198, 0, 199), BorderStyle.THIN, Color.BLACK, "General");
         return new CustomExcelCaptionDto("گزارش تیرماه اطلاعات کاربران", customExcelStyleDto);
     }
 
     /**
-     * لیستی از عناوین ستونهای اکسل را در خود دارد
+     * @return خروجی:  لیستی از عناوین ستونهای اکسل را در خود دارد
      */
     @Override
     public List<CustomExcelColumnHeaderDto> getColumnHeaderList() {
         //عناوین ستونهای اکسل
-        customExcelStyleDto = new CustomExcelStyleDto(HorizontalAlignment.CENTER, "Tahoma",true, Color.BLACK, new Color(49, 204, 206), BorderStyle.THIN, Color.BLACK,"General");
+        customExcelStyleDto = new CustomExcelStyleDto(HorizontalAlignment.CENTER, "Tahoma", true, Color.BLACK, new Color(49, 204, 206), BorderStyle.THIN, Color.BLACK, "General");
         List<CustomExcelColumnHeaderDto> columnHeaderList = new ArrayList<>();
         columnHeaderList.add(new CustomExcelColumnHeaderDto("نام", customExcelStyleDto));
         columnHeaderList.add(new CustomExcelColumnHeaderDto("نام خانوادگی", customExcelStyleDto));
@@ -76,7 +81,7 @@ public class UserExcelDto implements CustomExcelDto {
     }
 
     /**
-     * لیستی از تنظمیات ستونهای اکسل را در خود دارد
+     * @return خروجی:  لیستی از تنظمیات ستونهای اکسل را در خود دارد
      */
     @Override
     public List<CustomExcelColumnDto> getColumnList() {
@@ -86,24 +91,24 @@ public class UserExcelDto implements CustomExcelDto {
         formatterMap.put(false, "خیر");
 
         //تنظیمات ستونهای اکسل
-        customExcelStyleDto = new CustomExcelStyleDto(HorizontalAlignment.CENTER, "Tahoma",false, Color.BLACK, Color.WHITE, BorderStyle.THIN, Color.BLACK,"General");
-        CustomExcelStyleDto customExcelStyleDtoNumeric = new CustomExcelStyleDto(HorizontalAlignment.CENTER, "Tahoma",false, Color.BLUE, Color.WHITE, BorderStyle.THIN, Color.BLACK,"#,##0");
-        CustomExcelStyleDto customExcelStyleDtoNumericFloat = new CustomExcelStyleDto(HorizontalAlignment.CENTER, "Tahoma",false, Color.BLUE, Color.WHITE, BorderStyle.THIN, Color.BLACK,"#,##0.00");
+        customExcelStyleDto = new CustomExcelStyleDto(HorizontalAlignment.CENTER, "Tahoma", false, Color.BLACK, Color.WHITE, BorderStyle.THIN, Color.BLACK, "General");
+        CustomExcelStyleDto customExcelStyleDtoNumeric = new CustomExcelStyleDto(HorizontalAlignment.CENTER, "Tahoma", false, Color.BLUE, Color.WHITE, BorderStyle.THIN, Color.BLACK, "#,##0");
+        CustomExcelStyleDto customExcelStyleDtoNumericFloat = new CustomExcelStyleDto(HorizontalAlignment.CENTER, "Tahoma", false, Color.BLUE, Color.WHITE, BorderStyle.THIN, Color.BLACK, "#,##0.00");
         List<CustomExcelColumnDto> columnList = new ArrayList<>();
-        columnList.add(new CustomExcelColumnDto( null, customExcelStyleDto));
-        columnList.add(new CustomExcelColumnDto( null, customExcelStyleDto));
-        columnList.add(new CustomExcelColumnDto( formatterMap, customExcelStyleDto));
-        columnList.add(new CustomExcelColumnDto( null, customExcelStyleDtoNumeric));
-        columnList.add(new CustomExcelColumnDto( null, customExcelStyleDtoNumeric));
-        columnList.add(new CustomExcelColumnDto( null, customExcelStyleDtoNumericFloat));
-        columnList.add(new CustomExcelColumnDto( null, customExcelStyleDtoNumericFloat));
-        columnList.add(new CustomExcelColumnDto( null, customExcelStyleDtoNumeric));
-        columnList.add(new CustomExcelColumnDto( null, customExcelStyleDtoNumeric));
+        columnList.add(new CustomExcelColumnDto(null, customExcelStyleDto));
+        columnList.add(new CustomExcelColumnDto(null, customExcelStyleDto));
+        columnList.add(new CustomExcelColumnDto(formatterMap, customExcelStyleDto));
+        columnList.add(new CustomExcelColumnDto(null, customExcelStyleDtoNumeric));
+        columnList.add(new CustomExcelColumnDto(null, customExcelStyleDtoNumeric));
+        columnList.add(new CustomExcelColumnDto(null, customExcelStyleDtoNumericFloat));
+        columnList.add(new CustomExcelColumnDto(null, customExcelStyleDtoNumericFloat));
+        columnList.add(new CustomExcelColumnDto(null, customExcelStyleDtoNumeric));
+        columnList.add(new CustomExcelColumnDto(null, customExcelStyleDtoNumeric));
         return columnList;
     }
 
     /**
-     * داده های سطرها
+     * @return خروجی: لیست سطرهای داده
      */
     @Override
     public List<Object[]> getRowList() {

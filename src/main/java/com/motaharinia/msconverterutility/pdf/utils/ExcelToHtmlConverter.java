@@ -49,7 +49,7 @@ public class ExcelToHtmlConverter {
             BorderStyle.MEDIUM_DASHED, "dashed 2pt", BorderStyle.NONE, "none", BorderStyle.SLANTED_DASH_DOT,
             "dashed 2pt", BorderStyle.THICK, "solid 3pt", BorderStyle.THIN, "dashed 1pt");
 
-    @SuppressWarnings({ "unchecked" })
+    @SuppressWarnings({"unchecked"})
     private static <K, V> Map<K, V> mapFor(Object... mapping) {
         Map<K, V> map = new HashMap<K, V>();
         for (int i = 0; i < mapping.length; i += 2) {
@@ -61,8 +61,9 @@ public class ExcelToHtmlConverter {
 
     /**
      * متد سازنده کلاس تبدیل شیی اکسل به html
+     *
      * @param workbook شیی اکسل
-     * @param output خروجی
+     * @param output   خروجی
      * @return خروجی: کلاس تبدیل کننده
      */
     public static ExcelToHtmlConverter create(Workbook workbook, Appendable output) {
@@ -72,7 +73,8 @@ public class ExcelToHtmlConverter {
 
     /**
      * متد سازنده کلاس تبدیل شیی اکسل به html
-     * @param path مسیر فایل اکسل
+     *
+     * @param path   مسیر فایل اکسل
      * @param output خروجی
      * @return خروجی: کلاس تبدیل کننده
      * @throws IOException خطا
@@ -81,15 +83,14 @@ public class ExcelToHtmlConverter {
         return create(new FileInputStream(path), output);
     }
 
+
     /**
-     * ارائه شده workbook جدید برای converter متد ایجاد
+     * متد ایجاد مبدل برای ورکبوک جدید ارائه شده
      *
-     * @param in
-     *           workbook حاوی inputStream.
-     * @param output
-     *           تولید شده در آنجا قرار میگیرد Html جایی که .
-     *
-     * @return Html به  workbook شئ مورد نظر برای تبدیل
+     * @param in     ورکبوک حاوی اینپوت استریم
+     * @param output جایی که html در آن قرار میگیرد
+     * @return خروجی: شئ مورد نظر برای تبدیل Html
+     * @throws IOException خطا
      */
     public static ExcelToHtmlConverter create(InputStream in, Appendable output) throws IOException {
         Workbook wb = WorkbookFactory.create(in);
@@ -260,6 +261,7 @@ public class ExcelToHtmlConverter {
 
     /**
      * متد بررسی نوع سلول
+     *
      * @param c سلول مورد نظر جهت بررسی
      */
     @SuppressWarnings("deprecation")
@@ -295,6 +297,7 @@ public class ExcelToHtmlConverter {
 
     /**
      * متد بررسی محدوده ستون های اکسل
+     *
      * @param sheet صفحه اکسل مورد نظر برای چاپ
      */
     private void ensureColumnBounds(Sheet sheet) {
@@ -340,6 +343,7 @@ public class ExcelToHtmlConverter {
 
     /**
      * Html متد چاپ محتوای اکسل در صفحه
+     *
      * @param sheet صفحه اکسل مورد نظر برای چاپ
      */
     private void printSheetContent(Sheet sheet) {
@@ -379,8 +383,9 @@ public class ExcelToHtmlConverter {
     }
 
     /**
-     *  متد بررسی نوع سلول مورد نظر و تعین محل قراری گیری محتوای آن
-     * @param cell سلول مورد نظر جهت بررسی
+     * متد بررسی نوع سلول مورد نظر و تعین محل قراری گیری محتوای آن
+     *
+     * @param cell  سلول مورد نظر جهت بررسی
      * @param style استایل سلول
      */
     private String tagStyle(Cell cell, CellStyle style) {
