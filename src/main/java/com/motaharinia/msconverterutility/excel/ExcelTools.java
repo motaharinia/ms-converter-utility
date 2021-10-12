@@ -1,6 +1,7 @@
 package com.motaharinia.msconverterutility.excel;
 
 import com.motaharinia.msconverterutility.excel.dto.*;
+import com.motaharinia.msconverterutility.excel.dto.CustomExcelDto;
 import org.apache.commons.lang3.ObjectUtils;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.ss.util.CellRangeAddress;
@@ -25,7 +26,7 @@ public interface ExcelTools {
      * @return خروجی: شیی کتاب اکسل
      */
     @NotNull
-    static XSSFWorkbook generate(@NotNull ExcelDto excelDto) {
+    static XSSFWorkbook generate(@NotNull CustomExcelDto excelDto) {
 
         //ساخت شیی اکسل و صفحه اکسل داخل آن
         XSSFWorkbook workbook = new XSSFWorkbook();
@@ -57,7 +58,7 @@ public interface ExcelTools {
             int columnHeaderIndex = 0;
             //تنظیم سطر اکسل به عنوان سطر عناوین ستونها
             row = worksheet.createRow(rowIndex++);
-            for (ExcelColumnHeaderDto dto : excelDto.getColumnHeaderList()) {
+            for (CustomExcelColumnHeaderDto dto : excelDto.getColumnHeaderList()) {
                 style = makeStyle(workbook, dto.getStyle());
                 cell = row.createCell(columnHeaderIndex++);
                 cell.setCellStyle(style);
@@ -69,16 +70,16 @@ public interface ExcelTools {
         //متغیرهای مربوط به سطرهای داده
         BigInteger bigIntegerTest = null;
         BigDecimal bigDecimalTest = null;
-        ExcelColumnDto excelColumnDto;
+        CustomExcelColumnDto customExcelColumnDto;
         HashMap<Object, Object> formatterMap = new HashMap<>();
-        style = makeStyle(workbook, new ExcelStyleDto(HorizontalAlignment.CENTER, "Tahoma", false, Color.BLACK, Color.WHITE, BorderStyle.THIN, Color.BLACK, "General"));
+        style = makeStyle(workbook, new CustomExcelStyleDto(HorizontalAlignment.CENTER, "Tahoma", false, Color.BLACK, Color.WHITE, BorderStyle.THIN, Color.BLACK, "General"));
         for (Object[] dataColumnArray : excelDto.getRowList()) {
             row = worksheet.createRow(rowIndex++);
             for (int columnIndex = 0; columnIndex < dataColumnArray.length; columnIndex++) {
                 if (!ObjectUtils.isEmpty(excelDto.getColumnList()) && excelDto.getColumnList().size() > columnIndex) {
-                    excelColumnDto = excelDto.getColumnList().get(columnIndex);
-                    style = makeStyle(workbook, excelColumnDto.getStyle());
-                    formatterMap = excelColumnDto.getFormatterMap();
+                    customExcelColumnDto = excelDto.getColumnList().get(columnIndex);
+                    style = makeStyle(workbook, customExcelColumnDto.getStyle());
+                    formatterMap = customExcelColumnDto.getFormatterMap();
                 }
                 cell = row.createCell(columnIndex);
                 cell.setCellStyle(style);
@@ -124,27 +125,27 @@ public interface ExcelTools {
      * این متد با دریافت مدل تنظیمات ظاهری شیی استایل اکسل را ایجاد میکند
      *
      * @param workbook      شیی کتاب اکسل
-     * @param excelStyleDto مدل تنظیمات ظاهری
+     * @param customExcelStyleDto مدل تنظیمات ظاهری
      * @return خروجی: شیی استایل اکسل
      */
-    private static XSSFCellStyle makeStyle(XSSFWorkbook workbook, ExcelStyleDto excelStyleDto) {
+    private static XSSFCellStyle makeStyle(XSSFWorkbook workbook, CustomExcelStyleDto customExcelStyleDto) {
         XSSFFont styleFont = workbook.createFont();
         XSSFCellStyle style = workbook.createCellStyle();
         DataFormat dataFormat = workbook.createDataFormat();
         //قلم
-        styleFont.setBold(excelStyleDto.getFontIsBold());
-        styleFont.setFontName(excelStyleDto.getFontName());
-        styleFont.setColor(new XSSFColor(excelStyleDto.getFontColor()));
+        styleFont.setBold(customExcelStyleDto.getFontIsBold());
+        styleFont.setFontName(customExcelStyleDto.getFontName());
+        styleFont.setColor(new XSSFColor(customExcelStyleDto.getFontColor()));
         //ظاهر
         style.setFont(styleFont);
-        style.setAlignment(excelStyleDto.getAlignment());
-        style.setFillForegroundColor(new XSSFColor(excelStyleDto.getBackgroundColor()));
+        style.setAlignment(customExcelStyleDto.getAlignment());
+        style.setFillForegroundColor(new XSSFColor(customExcelStyleDto.getBackgroundColor()));
         style.setFillPattern(FillPatternType.SOLID_FOREGROUND);
-        style.setBorderBottom(excelStyleDto.getBorderStyle());
-        style.setBorderRight(excelStyleDto.getBorderStyle());
-        style.setBorderLeft(excelStyleDto.getBorderStyle());
-        style.setBorderTop(excelStyleDto.getBorderStyle());
-        style.setDataFormat(dataFormat.getFormat(excelStyleDto.getDataFormat()));
+        style.setBorderBottom(customExcelStyleDto.getBorderStyle());
+        style.setBorderRight(customExcelStyleDto.getBorderStyle());
+        style.setBorderLeft(customExcelStyleDto.getBorderStyle());
+        style.setBorderTop(customExcelStyleDto.getBorderStyle());
+        style.setDataFormat(dataFormat.getFormat(customExcelStyleDto.getDataFormat()));
 
         return style;
     }

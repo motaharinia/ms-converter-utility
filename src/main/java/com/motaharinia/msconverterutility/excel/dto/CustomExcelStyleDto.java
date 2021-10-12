@@ -16,7 +16,7 @@ import java.io.Serializable;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class ExcelStyleDto implements Serializable {
+public class CustomExcelStyleDto implements Serializable {
     /**
      * جهت
      */

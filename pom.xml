@@ -5,7 +5,7 @@
 
     <groupId>com.motaharinia</groupId>
     <artifactId>ms-converter-utility</artifactId>
-    <version>0.0.2</version>
+    <version>0.0.3</version>
     <name>Ms Converter Utility</name>
     <description>Ms Converter Utility is developed by Mostafa Motaharinia (eng.motahari@gmail.com). The project contains utilities to make the main project code uniform and similar and it is used as a dependency in other projects</description>
     <url>https://github.com/motaharinia</url>

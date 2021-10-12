@@ -14,7 +14,7 @@ import java.io.Serializable;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class ExcelCaptionDto implements Serializable {
+public class CustomExcelCaptionDto implements Serializable {
     /**
      * عنوان سربرگ
      */
@@ -22,5 +22,5 @@ public class ExcelCaptionDto implements Serializable {
     /**
      * تنظیمات ظاهری سربرگ
      */
-    private ExcelStyleDto style;
+    private CustomExcelStyleDto style;
 }

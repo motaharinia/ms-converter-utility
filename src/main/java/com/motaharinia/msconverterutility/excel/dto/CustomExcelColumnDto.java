@@ -11,22 +11,26 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
+import java.util.HashMap;
 
 /**
  * @author https://github.com/motaharinia<br>
- * کلاس مدل عناوین ستونهای اکسل
+ * کلاس مدل تنظمیات ستونهای اکسل
  */
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class ExcelColumnHeaderDto implements Serializable {
+public class CustomExcelColumnDto implements Serializable {
+
     /**
-     * عنوان ستون
+     * فرمت کننده ستون
+     * مثلا میخواهیم برای مقادیر صفر در ستون کلمه خیر بیاریم و برای مقادیر یک در ستون کلمه بلی بیاریم
      */
-    private String title = "";
+    private HashMap<Object, Object> formatterMap;
     /**
-     * تنظیمات ظاهری عنوان ستون
+     * تنظیمات ظاهری ستون
      */
-    private ExcelStyleDto style;
+    private CustomExcelStyleDto style;
+
 }
