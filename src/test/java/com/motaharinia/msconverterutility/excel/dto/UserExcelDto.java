@@ -4,6 +4,7 @@ import org.apache.poi.ss.usermodel.BorderStyle;
 import org.apache.poi.ss.usermodel.HorizontalAlignment;
 
 import java.awt.*;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -12,7 +13,7 @@ import java.util.List;
  * @author https://github.com/motaharinia<br>
  * کلاس پیاده سازی مدل اطلاعات و تنظیمات تولید اکسل کاربران
  */
-public class UserExcelDto implements CustomExcelDto {
+public class UserExcelDto implements CustomExcelDto, Serializable {
 
     /**
      * شیی تنظیمات ظاهری
